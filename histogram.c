@@ -5,7 +5,6 @@
 int main() {
     int c, length = 0;  // Initialize length
     int word_length[MAX_WORD_LENGTH] = {0};
-    int max_count = 0;
 
     while ((c = getchar()) != EOF) {
         if (c == ' ' || c == '\n' || c == '\t') {
@@ -15,11 +14,6 @@ int main() {
                 } else {
                     word_length[MAX_WORD_LENGTH - 1]++;  // Count longer words in last bin
                 }
-
-                if (length < MAX_WORD_LENGTH && word_length[length] > max_count) {
-                    max_count = word_length[length];  // Update max_count safely
-                }
-
                 length = 0;  // Reset for next word
             }
         } else {
@@ -33,10 +27,6 @@ int main() {
             word_length[length]++;
         } else {
             word_length[MAX_WORD_LENGTH - 1]++;
-        }
-
-        if (length < MAX_WORD_LENGTH && word_length[length] > max_count) {
-            max_count = word_length[length];
         }
     }
 
